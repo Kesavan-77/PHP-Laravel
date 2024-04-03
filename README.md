@@ -1,14 +1,9 @@
 # Day01
 ## Topics covered
 
-**=> Strings**
+**---> Strings** **---> String Operations** **---> Arrays** **---> Array Operations** **---> Functions** **---> SuperGlobal Variables**
 
-**=> String Operations**
+# Day02
+## Topics covered
 
-**=> Arrays**
-
-**=> Array Operations**
-
-**=> Functions**
-
-**=> SuperGlobal Variables**
+**---> File Operations** **---> File Handling** **---> Cookies** **---> Session**
