@@ -7,3 +7,8 @@
 ## Topics covered
 
 **---> File Operations** **---> File Handling** **---> Cookies** **---> Session**
+
+# Day03
+## Topics covered
+
+**---> OOP concepts** **---> Classes and Objects** **---> Constructor and Destructor** **---> Inheritance** **---> Constants**

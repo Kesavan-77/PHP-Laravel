@@ -15,7 +15,7 @@ final class School{
     }
 }
 
-class College extends School{ //provides an error due to final keyword in the class;
+class College extends School{ //provides an error due to final keyword in the class
    function welcome(){
     echo "welcome to the hell<br>";
    }
