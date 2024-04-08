@@ -15,7 +15,7 @@ class MT15 implements Bike{
 }
 
 class R15 implements Bike{
-    public function price(){
+    public function price(){ 
         echo "R15 : 200000";
     }
 }
