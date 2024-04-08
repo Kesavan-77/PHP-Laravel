@@ -12,3 +12,8 @@
 ## Topics covered
 
 **---> OOP concepts** **---> Classes and Objects** **---> Constructor and Destructor** **---> Inheritance** **---> Constants**
+
+# Day04
+## Topics covered
+
+**---> Abstract Classes** **---> Interface** **---> Traits**
