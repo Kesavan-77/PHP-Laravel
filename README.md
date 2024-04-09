@@ -1,19 +1,24 @@
-# Day01
-## Topics covered
+## Day01
+#### Topics covered
 
-**---> Strings** **---> String Operations** **---> Arrays** **---> Array Operations** **---> Functions** **---> SuperGlobal Variables**
+---> Strings ---> String Operations ---> Arrays ---> Array Operations ---> Functions ---> SuperGlobal Variables
 
-# Day02
-## Topics covered
+## Day02
+#### Topics covered
 
-**---> File Operations** **---> File Handling** **---> Cookies** **---> Session**
+---> File Operations ---> File Handling ---> Cookies ---> Session
 
-# Day03
-## Topics covered
+## Day03
+### Topics covered
 
-**---> OOP concepts** **---> Classes and Objects** **---> Constructor and Destructor** **---> Inheritance** **---> Constants**
+---> OOP concepts ---> Classes and Objects ---> Constructor and Destructor ---> Inheritance ---> Constants
 
-# Day04
-## Topics covered
+## Day04
+### Topics covered
 
-**---> Abstract Classes** **---> Interface** **---> Traits**
+---> Abstract Classes ---> Interface ---> Traits
+
+## Day05
+### Topics covered
+
+---> Polymorphism ---> Static methods and operations ---> Namespace
