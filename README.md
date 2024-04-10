@@ -22,3 +22,8 @@
 ### Topics covered
 
 ---> Polymorphism ---> Static methods and operations ---> Namespace ---> Problem Solving
+
+## Day06
+### Topics covered
+
+---> SOLID principles and its implementations
