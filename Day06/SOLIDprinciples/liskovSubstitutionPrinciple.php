@@ -1,8 +1,7 @@
 <?php
-
-/* The Open-Closed Principle states that a class should be open for extension but closed for modification.
- In PHP, this can be achieved by designing classes that have clear, well-defined interfaces and
-that use inheritance and abstraction to allow for flexibility and extensibility. */
+/*  The Liskov Substitution Principle states that derived classes should be substitutable for their base classes. 
+In PHP, this can be achieved by ensuring that subclasses conform to the same contracts and 
+behave in the same way as their base classes. */
 
 interface UserInfo {
     public function getUserName();
@@ -40,13 +39,23 @@ class Employee extends User {
     }
 }
 
-$user = new User("Arul", 71382006023);
-echo "UserName is: " . $user->getUserName() . "<br>";
-echo "UserId is: " . $user->getUserID() . "<br>";
+function displayUserInfo(UserInfo $user) {
+    echo "UserName is: " . $user->getUserName() . "<br>";
+    echo "UserId is: " . $user->getUserID() . "<br>";
+    // Check if the object is an instance of Employee
+    if ($user instanceof Employee) {
+        echo "Department: " . $user->getDepartment() . "<br>";
+    }
+}
 
+
+$user = new User("Arul", 71382006023);
 $employee = new Employee("John", 123456, "IT");
-echo "Employee Name: " . $employee->getUserName() . "<br>";
-echo "Employee ID: " . $employee->getUserID() . "<br>";
-echo "Department: " . $employee->getDepartment() . "<br>";
+
+echo "Displaying user information:<br>";
+displayUserInfo($user);
+
+echo "<br>Displaying employee information:<br>";
+displayUserInfo($employee);
 
 ?>
