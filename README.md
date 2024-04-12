@@ -27,3 +27,8 @@
 ### Topics covered
 
 ---> SOLID principles and its implementations
+
+## Day07
+### Topics covered
+
+---> Form Validation using OOPs implementation and JSON operations
