@@ -66,7 +66,7 @@ class Adult implements Validate{
     }
 
     function getStatus(){
-        if(!filter_var($this->adult, FILTER_VALIDATE_BOOLEAN) === false){
+        if($this->adult == true || $this->adult == false){
             return true;
         }else{
             return false;

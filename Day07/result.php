@@ -16,6 +16,8 @@
         $adult = $_GET['adult'];
         $ph_no = $_GET['ph_no'];
         $message = $_GET['msg'];
+        $cookieMessage = "name: $name|| email: $email || url: $url || adult: $adult || ph_no: $ph_no || message: $message";
+        setcookie($email, $cookieMessage, time() + (86400 * 30), "/");
         echo "<p>Name: " . htmlspecialchars($name) . "</p>";
         echo "<p>email: " . htmlspecialchars($email) . "</p>";
         echo "<p>website url: " . htmlspecialchars($url) . "</p>";
