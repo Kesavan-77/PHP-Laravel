@@ -1,6 +1,4 @@
-
 <html>
-
     <body>
         <form method="POST" action=''>
             <input type="text" name="name">

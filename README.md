@@ -32,3 +32,8 @@
 ### Topics covered
 
 ---> Form Validation using OOPs implementation and JSON operations
+
+## Day08
+### Topics covered
+
+---> Bank account balance checker and a small task
