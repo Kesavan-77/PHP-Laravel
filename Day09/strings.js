@@ -23,5 +23,7 @@ console.log(input.replace("just","only"));
 console.log(input.slice(24));
 console.log(input.startsWith("There"));
 console.log(input.endsWith("Lessons"));
+console.log(input.includes("are"));
+console.log(input.split(" "));
 
 console.log(input);
