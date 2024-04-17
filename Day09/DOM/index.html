@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .warn{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .subContent{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .subContent input{
+            padding: 10px;
+            border-radius: 6px;
+            border-style: none;
+            border: 2px solid grey;
+            
+        }
+        button{
+            padding: 10px;
+            background-color: rgb(74, 80, 255);
+            border-style: none;
+            color: white;
+            font-size: larger;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #back{
+            background-color: red;
+        }
+        .result{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="warn">
+        <h1>Emoji Responser</h1>
+        <div class="subContent">
+            <button class="btn-1" id="btn-1" onclick="angryEmoji()">Need any help?</button>
+            <div class="result hidden" id="emoji">
+                <img src="https://png.pngtree.com/png-clipart/20230327/original/pngtree-whatsapp-angry-face-emoji-png-image_9005498.png" alt="emoji" height="150px" width="150px">
+                <h3>Do it yourself</h3>
+                <a href="./index.html"><button id="back">Back</button></a>
+            </div>
+        </div>
+        <div class="subContent">
+            <button class="btn-2" id="btn-2" onclick="reaction()">Need calculator</button>
+            <form class="cal-form result hidden" id="cal-form">
+                <label>Enter your calculation</label>
+                <input type="text" id='cal' placeholder="provide problem" required>
+                <button onclick="solve()">Submit</button>
+            </form>
+        </div>
+        <div class="subContent">
+            <button class="btn-3" id="btn-3" onclick="thought()">Today quote?</button>
+            <div class="result hidden" id="thought">
+                <img src="https://i.pinimg.com/736x/4a/a1/a1/4aa1a18128f8ca6a0d4a8d98ae5c0a4c.jpg" alt="thought" height="150px">
+                <a href="./index.html"><button id="back">Back</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./main.js"></script>
+</html>
