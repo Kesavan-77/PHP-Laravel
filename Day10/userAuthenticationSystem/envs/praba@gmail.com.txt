@@ -1,1 +1,1 @@
-{"fname":"praba","lname":"C","email":"praba@gmail.com","password":"1234567890"}
+{"fname":"praba","lname":"C","email":"praba@gmail.com","password":"$2y$10$yRZzHTGvJDWbUNoshtfmveskrr3FL5useOeDEn3QnEf043UlTmY22"}

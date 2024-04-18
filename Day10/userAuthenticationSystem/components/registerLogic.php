@@ -57,7 +57,7 @@ if(isset($_POST['register'])){
 
     if($validateResult){
         $myfile = fopen("../envs/$email.txt", "w") or die("Unable to open file!");
-        $user = array("fname"=>$firstName,"lname"=>$lastName,"email"=>$email,"password"=>$password);
+        $user = array("fname"=>$firstName,"lname"=>$lastName,"email"=>$email,"password"=>password_hash($password, PASSWORD_DEFAULT));
         fwrite($myfile, json_encode($user));
         fclose($myfile);
         header("Location: login.php");

@@ -24,7 +24,7 @@ function PasswordValidate($email,$pass,&$result){
         $credentials = json_decode($jsonString,true);
         $_SESSION['user_name'] = $credentials["fname"];
         $_SESSION['email_id'] = $email;
-        if($pass!=$credentials["password"]){
+        if(!password_verify($pass,$credentials["password"])){
             $GLOBALS['passwordErr'] = "Incorrect password";
             $result = false;
         }
@@ -42,6 +42,13 @@ if(isset($_POST['login'])){
     PasswordValidate($email,$password,$validateResult);
 
     if($validateResult){
+        $userName = $_SESSION['user_name'];
+        $myfile = fopen("../envs/".$userName."Timings.txt","a");
+        $timing = array("date"=>date("Y.m.d"),"start"=>date("h:i:sa"),"end"=>'');
+        $timingDetails = json_encode($timing,true);
+        fwrite($myfile,$timingDetails);
+        fwrite($myfile,"\n");
+        fclose($myfile);
         header("Location: dashboard.php");
         exit();
     }
