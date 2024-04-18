@@ -37,3 +37,8 @@
 ### Topics covered
 
 ---> Bank account balance checker and a small task
+
+## Day09
+### Topics covered
+
+---> Javascript basics and DOM manipulation
