@@ -42,3 +42,8 @@
 ### Topics covered
 
 ---> Javascript basics and DOM manipulation
+
+## Day10
+### Topics covered
+
+---> Task Completion
