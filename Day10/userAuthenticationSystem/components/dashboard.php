@@ -50,6 +50,7 @@ if(isset($_POST['logout'])){
                         if($timing["end"]){
                         echo "<br> Ended: ";
                         print_r($timing["end"]);
+                        echo "<hr>";
                     }
                     }
                   }
