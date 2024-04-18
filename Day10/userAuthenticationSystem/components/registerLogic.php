@@ -54,6 +54,15 @@ if(isset($_POST['register'])){
     EmailValidate($email,$validateResult);
     PasswordValidate($password,$validateResult);
     ConfirmPasswordValidate($password,$confirmPassword,$validateResult);
+
+    if($validateResult){
+        $myfile = fopen("../envs/$email.txt", "w") or die("Unable to open file!");
+        $user = array("fname"=>$firstName,"lname"=>$lastName,"email"=>$email,"password"=>$password);
+        fwrite($myfile, json_encode($user));
+        fclose($myfile);
+        header("Location: login.php");
+        exit();
+    }
 }
 
 ?>

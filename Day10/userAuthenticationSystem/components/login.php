@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include './loginLogic.php' ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,19 +11,21 @@
 </head>
 <body class="d-flex p-5 bg-primary">
     <div class="container p-5 rounded" style="width: 500px;">
-        <form method="POST" id="login-form">
+        <form method="POST" action="" id="login-form">
             <h1 class="text-center fw-bold">Login</h1>
             <hr>
             <div class="form-group mt-4">
                 <label class="fs-5 fw-medium">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="<?php if(isset($email)) echo $email; ?>">
+                <?php echo $emailErr; ?>
                 
             </div>
             <div class="form-group mt-4">
                 <label class="fs-5 fw-medium">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?php if(isset($password)) echo $password; ?>">
+                <?php echo $passwordErr; ?>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Login</button><br><br>
+            <button type="submit" class="btn btn-primary mt-3" name="login">Login</button><br><br>
             <a href="../components/register.php" class="text-danger">Don't have an account?</a>
         </form>
     </div>
