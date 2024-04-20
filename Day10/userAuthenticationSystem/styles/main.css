@@ -16,33 +16,45 @@
 .dashboard{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: rgb(237, 237, 237);
 }
 
 .dashboard .main-content{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
 }
 
-.dashboard .user-info{
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 10px;
-}
 .dashboard .timings{
-    width: 500px;
+    width: fit-content;
     display: flex;
+    height: 90vh;
     flex-direction: column;
-    background-color: #fff;
+    box-shadow: 10px 5px 5px rgb(240, 240, 240);
     padding: 2rem;
-    border-radius: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll; 
+}
+.dashboard .timings .timing-details{
+    display: flex;
+    flex-direction: column-reverse;
+}
+#close-icon{
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(117, 117, 117);
+    text-align: end;
+    cursor: pointer;
+}
+
+.getPrivacyDetails, .getUserDetails{
+    background-color: rgb(250, 250, 250);
+    height: fit-content;
+    width: fit-content;
+    padding:1.5rem;
+    border-radius: 8px;
+    transition:transform 0.5s ease; ;
+    cursor: pointer;
+}
+
+.getPrivacyDetails:hover, .getUserDetails:hover{
+    transform: scale(1.1); 
 }
 

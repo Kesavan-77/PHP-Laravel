@@ -42,8 +42,8 @@ if(isset($_POST['login'])){
     PasswordValidate($email,$password,$validateResult);
 
     if($validateResult){
-        $userName = $_SESSION['user_name'];
-        $myfile = fopen("../envs/".$userName."Timings.txt","a");
+        $email = $_SESSION['email_id'];
+        $myfile = fopen("../envs/".$email."Timings.txt","a");
         $timing = array("date"=>date("Y.m.d"),"start"=>date("h:i:sa"),"end"=>'');
         $timingDetails = json_encode($timing,true);
         fwrite($myfile,$timingDetails);
