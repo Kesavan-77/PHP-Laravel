@@ -1,0 +1,4 @@
+{"acc_name":"insta","password":"1234567"}
+{"acc_name":"mail","password":"727872"}
+{"acc_name":"facebook","password":"1111111"}
+{"acc_name":"dribble","password":"45566cdssfg"}

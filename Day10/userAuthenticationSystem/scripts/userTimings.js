@@ -15,3 +15,21 @@ displayTiming.addEventListener("click", () => {
         timingContainers[i].classList.remove('hidden');
     }
 });
+
+function displayDeleteAccount(){
+    document.getElementById('deleteContainer').classList.toggle('hidden');
+}
+
+function displayAddAccount(){
+    document.getElementById('addContainer').classList.toggle('hidden');
+}
+
+function displayPrivacyContent(){
+    document.getElementById('user-content').classList.add('hidden');
+    document.getElementById('privacy-content').classList.remove('hidden');
+}
+
+function displayUserContent(){
+    document.getElementById('privacy-content').classList.add('hidden');
+    document.getElementById('user-content').classList.remove('hidden');
+}

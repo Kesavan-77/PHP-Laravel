@@ -14,7 +14,6 @@ function EmailValidate($val,&$result){
         $GLOBALS['emailErr'] = "Email address does not exist";
         $result = false;
     }
-
 }
 
 function PasswordValidate($email,$pass,&$result){
