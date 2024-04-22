@@ -23,6 +23,19 @@
 //     }
 // });
 
+function showPassword(e){
+    e.preventDefault();
+    var passInput = $('#pass');
+    if (passInput.length) {
+        if (passInput.attr("type") === 'password') {
+            passInput.attr("type", "text");
+        } else if (passInput.attr("type") === 'text') {
+            passInput.attr("type", "password");
+        }
+    }
+}
+
+
 $(function(){
 
     $("#btn-0").click(function(){
@@ -52,8 +65,6 @@ $(function(){
     $("#ques").click(function(){
         $('#content').slideToggle(500);
     })
-
-    
 
     $('#nav-list a').on('click', function(event) {
         if (this.hash !== '') {
