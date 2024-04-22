@@ -47,3 +47,8 @@
 ### Topics covered
 
 ---> Task Completion
+
+## Day11
+### Topics covered
+
+---> BOM and JQuery basics
