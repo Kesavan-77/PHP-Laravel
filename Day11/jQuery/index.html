@@ -7,6 +7,11 @@
     <style>
         li{
             list-style: none;
+            
+        }
+        a{
+            text-decoration: none;
+            color: #fff;
         }
         button{
             padding: 8px;
@@ -51,11 +56,36 @@
             border-radius: 8px;
             width: 390px;
         }
-        #ques{
+        #ques, li{
             cursor: pointer;
         }
         #content{
             display: none;
+        }
+        .nav-contents{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        .about{
+            height: 1000px;
+            background-color: rgb(255, 137, 137);
+            width: 100%;
+            text-align: center;
+        }
+        .product{
+            height: 1000px;
+            background-color: rgb(151, 255, 137);
+            width: 100%;
+            text-align: center;
+        }
+        .contact{
+            height: 1000px;
+            background-color: rgb(139, 137, 255);
+            width: 100%;
+            text-align: center;
         }
     </style>
     <body>
@@ -69,16 +99,21 @@
         <div class="main-content">
         <nav>
             <ul id="nav-list">
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Products</li>
-                <li>Contact</li>
+                <li><a href="">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#product">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <div class="sub-content">
             <h2 id="ques">What is Jquery</h2>
             <p id="content">jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.</p>
         </div>
+    </div>
+    <div class="nav-contents">
+    <div class="about" id="about">About</div>
+    <div class="product" id="product">Product</div>
+    <div class="contact" id="contact">Contact</div>
     </div>
     </body>
     <script src="./script/main.js"></script>
