@@ -100,7 +100,6 @@ if(isset($_POST['logout'])){
                 <?php
                  require './addUserRecords.php';
                  require './deleteUserRecord.php';
-                
                 ?>
                 <h5>privacy details</h5>
                 <hr><br><br>
