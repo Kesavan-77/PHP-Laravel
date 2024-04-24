@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery</title>
+    <script src="./scripts/jquery.js"></script>
+    <script src="./scripts/manipulation.js"></script>
+  </head>
+  <style>
+    body{
+      background-color: rgb(24, 24, 24);
+    }
+    .container{
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+    #content-box{
+      margin-top: 3rem;
+      background-color: rgb(47, 47, 47);
+      color: orange;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 1rem;
+      letter-spacing: 2px;
+      height: fit-content;
+      width: 600px;
+      border-radius: 8px;
+    }
+    .buttons{
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    button{
+      padding: 10px;
+      margin-left: 20px;
+      background-color: orange;
+      color: rgb(47, 47, 47);
+      font-size: 1.2rem;
+      font-weight: 500;
+      border-style: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div id="content-box">
+        <p>Hello world</p>
+        <p>Welcome to programming</p>
+        <p>Engineering is not only about coding</p>
+        <p>Try not to catch</p>
+        <p>It's not bug it's a feature</p>
+      </div>
+      <div class="buttons">
+      <button id="create">Create content</button>
+      <button id="change">Change content</button>
+      <button id="changeAll">Change All content</button>
+      <button id="append">Append</button>
+      <button id="prepend">Prepend</button>
+      <button id="before">Before</button>
+      <button id="after">After</button>
+      <button id="wrap">wrap</button>
+      <button id="empty">empty</button>
+    </div>
+    </div>
+  </body>
+</html>

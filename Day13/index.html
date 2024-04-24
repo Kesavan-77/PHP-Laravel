@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" type="text/css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | E-commerce product page</title>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="nav-brand">
+          <img src="./images/icon-menu.svg" onclick="showSidebar()" />
+          <h1 class="brand">sneakers</h1>
+        </div>
+        <nav>
+          <ul>
+            <li>Collections</li>
+            <li>Men</li>
+            <li>Women</li>
+            <li>About</li>
+            <li>Contact</li>
+          </ul>
+        </nav>
+        <div class="cart-user">
+          <div class="cart">
+            <img
+              src="./images/icon-cart.svg"
+              alt="cart"
+              height="30px"
+              width="30px"
+              onclick="showCart()"
+            />
+          </div>
+          <div class="user">
+            <img
+              src="./images/image-avatar.png"
+              alt="user"
+              height="50px"
+              width="50px"
+            />
+          </div>
+        </div>
+      </div>
+      <hr />
+      <nav class="sidebar">
+        <ul>
+          <li>
+            <img src="./images/icon-close.svg" onclick="closeSidebar()" />
+          </li>
+          <li>Collections</li>
+          <li>Men</li>
+          <li>Women</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+      <div class="cart-page cart-display">
+        <h2>cart</h2>
+        <hr />
+        <p id="no-procuct">Your cart is empty</p>
+        <div class="cart-product">
+          <div class="product-info">
+            <div>
+              <img
+                src="./images/image-product-1-thumbnail.jpg"
+                alt="sample1"
+                height="50px"
+              />
+            </div>
+            <div>
+              <p>Fall Limited Edition Sneakers</p>
+              <p class="total-amount"></p>
+            </div>
+            <div>
+              <img src="./images/icon-delete.svg" alt="delete" height="20px" onclick="deleteCart()" />
+            </div>
+          </div>
+          <button class="checkout">Checkout</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="main-page">
+        <div class="display-page">
+          <div class="main-image">
+            <img
+              src="./images/image-product-1.jpg"
+              alt="mainImage"
+              height="500px"
+            />
+          </div>
+          <div class="options-images">
+            <div class="imgs">
+              <img src="./images/image-product-1-thumbnail.jpg" alt="sample1" />
+            </div>
+            <div class="imgs">
+              <img src="./images/image-product-2-thumbnail.jpg" alt="sample2" />
+            </div>
+            <div class="imgs">
+              <img src="./images/image-product-3-thumbnail.jpg" alt="sample3" />
+            </div>
+            <div class="imgs">
+              <img src="./images/image-product-4-thumbnail.jpg" alt="sample4" />
+            </div>
+          </div>
+          <div id="slider-container">
+            <div id="slider">
+              <img src="./images/image-product-1.jpg" class="slide" alt="sample1" height="300px"/>
+              <img src="./images/image-product-2.jpg" class="slide" alt="sample2" height="300px"/>
+              <img src="./images/image-product-3.jpg" class="slide" alt="sample3" height="300px"/>
+              <img src="./images/image-product-4.jpg" class="slide" alt="sample1" height="300px" />
+            </div>
+            <div class="btn-container">
+              <img src="./images/icon-previous.svg" alt="prev" class="prev" onclick="plusDivs(-1)">
+              <img src="./images/icon-next.svg" alt="next" class="next" onclick="plusDivs(1)">
+            </div>
+          </div>
+        </div>
+        <div class="details-page">
+          <div class="product-head">
+            <p>SNEAKER COMPANY</p>
+            <h1>Fall Limited Edition Sneakers</h1>
+          </div>
+          <div class="product-body">
+            <p>
+              These low-profile sneakers are your perfect casual wear companion.
+              Featuring a durable rubber outer sole, they'll withstand
+              everything the weather can offer.
+            </p>
+          </div>
+          <div class="product-rate">
+            <div class="price">
+              <h1>$125.00</h1>
+              <p>50%</p>
+            </div>
+            <div class="mrp">
+              <p>$250.00</p>
+            </div>
+          </div>
+          <div class="function-buttons">
+            <div class="cart-count">
+              <button id="cart-count">
+                <span onclick="decrement()">-</span
+                ><span id="item-count">0</span
+                ><span onclick="increment()">+</span>
+              </button>
+            </div>
+            <div class="add-cart">
+              <button onclick="addCart()">
+                <span><img src="./images/icon-cart1.svg" /></span
+                ><span>Add to cart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="./main.js"></script>
+</html>
