@@ -52,3 +52,8 @@
 ### Topics covered
 
 ---> BOM and JQuery basics
+
+## Day12
+### Topics covered
+
+---> JQuery
