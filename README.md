@@ -62,3 +62,8 @@
 ### Topics covered
 
 ---> Product page using DOM and jQuery
+
+## Day14
+### Topics covered
+
+---> XML, Promises and Async/Await functions
