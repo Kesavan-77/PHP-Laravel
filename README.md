@@ -57,3 +57,8 @@
 ### Topics covered
 
 ---> JQuery
+
+## Day13
+### Topics covered
+
+---> Product page using DOM and jQuery
