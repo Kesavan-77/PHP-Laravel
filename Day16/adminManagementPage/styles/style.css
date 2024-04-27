@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kumbh+Sans:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Kumbh Sans", sans-serif;
+}
+
+:root{
+    --Orange: hsl(26, 100%, 55%);
+    --PaleOrange: hsl(25, 100%, 94%);
+    --Very-dark-blue: hsl(220, 13%, 13%);
+    --Dark-grayish-blue: hsl(219, 9%, 45%);
+    --Grayish-blue: hsl(220, 14%, 75%);
+    --Light-grayish-blue: hsl(223, 64%, 98%);
+    --White: hsl(0, 0%, 100%);
+    --Black: hsl(0, 0%, 0%);
+}
+
+ul a{
+    text-decoration: none;
+    color: var(--Dark-grayish-blue);
+    
+}
+
+body{
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    height: 70px;
+}
+.navbar .nav-brand{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--Orange);
+    gap: 1rem;
+}
+.sidebar{
+    display: none;
+    
+}
+.sidebar ul li{
+    cursor: pointer;
+}
+
+.navbar .nav-brand img{
+    width: 50px;
+    height: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: none;
+}
+.navbar .brand{
+    font-size: 3rem;
+}
+.navbar ul{
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    color: var(--Dark-grayish-blue);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+li{
+    cursor: pointer;
+}
+
+.navbar .cart-user{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+hr{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: var(--Grayish-blue);
+}
+
+main{
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+ form{
+    margin-top: 10px;
+    border: 2px solid var(--Grayish-blue);
+    padding: 2rem;
+    border-radius: 8px;
+    width: fit-content;
+}
+ h3{
+    background-color: var(--Orange);
+    color: #fff;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 8px;
+}
+
+ form .c-input, form .p-input{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+form p{
+    color: red;
+}
+
+ form .c-input label, form .p-input label{
+    font-size: 16px;
+}
+
+ form .c-input input, form .p-input input{
+    padding: 10px 35px 10px 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+ form button, form button{
+    padding: 7px 35px 7px 35px;
+    background-color: var(--Orange);
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 6px;
+    border-style: none
+}
+select{
+    padding: 10px 35px 10px 35px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
