@@ -139,11 +139,13 @@ form p{
     font-weight: 600;
     font-size: 18px;
     border-radius: 6px;
-    border-style: none
+    border-style: none;
+    cursor: pointer;
 }
 select{
+    width: 230px;
     padding: 10px 35px 10px 35px;
-    border: 1px solid #ccc;
+    border: 1px solid #555555;
     background-color: #fff;
     border-radius: 5px;
     margin-top: 10px;

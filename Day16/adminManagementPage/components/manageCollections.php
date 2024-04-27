@@ -66,22 +66,22 @@
                         <label for="collection">Collection:</label><br>
                         <select name="collection" id="collection">
                             <?php 
-                            $sql = "SELECT collection_name FROM collections;";
+                            $sql = "SELECT collection_name FROM collections ORDER BY collection_name;";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<option value=".$row['collection_name']."name = 'update-old'".">".$row['collection_name'] . "</option>";
+                                    echo "<option value=".$row['collection_name'].">".$row['collection_name'] . "</option>";
                                 }
                             } ?>
                         </select><br>
-                        <p><?php echo $cNameErr; ?></p>
+                        <p><?php echo "select one" ?></p>
                     </div>
                     <div>
                         <label>New collection name</label><br>
                         <input type="text" name="update-new" placeholder="Enter new name:"><br>
-                        <p><?php echo $cDesErr ?></p>
+                        <p><?php echo $updateNameErr ?></p>
                     </div>
-                    <button type="submit" name="add-collection">Submit</button>
+                    <button type="submit" name="update-collection">Submit</button>
                 </div>
             </form>
         </div>
@@ -91,14 +91,18 @@
                 <div class="c-input">
                     <div>
                         <label for="collection">Collection:</label><br>
-                        <select name="collection" id="collection">
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
+                        <select name="deleteOption" id="collection">
+                            <?php 
+                            $sql = "SELECT collection_name FROM collections ORDER BY collection_name;";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<option value=".$row['collection_name'].">".$row['collection_name'] . "</option>";
+                                }
+                            } ?>
                         </select><br>
-                        <p><?php echo $cNameErr; ?></p>
                     </div>
-                    <button type="submit" name="add-collection">Submit</button>
+                    <button type="submit" name="delete-collection">Submit</button>
                 </div>
             </form>
         </div>

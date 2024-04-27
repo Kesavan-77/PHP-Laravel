@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="./styles/main.css">
 
-    <title>User Authentication System</title>
+    <title>ShopZone</title>
 </head>
 <body class="d-flex p-5 bg-primary">
     <div class="container p-5 rounded" style="width: 400px;">
