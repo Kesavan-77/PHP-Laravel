@@ -24,7 +24,7 @@ $create_table = mysqli_query($conn, $sql);
 $sql = "CREATE TABLE IF NOT EXISTS collections (
     collection_name VARCHAR(20) NOT NULL,
     collection_description VARCHAR(100)
-)";        
+)";
 $create_table = mysqli_query($conn, $sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS products (
@@ -35,7 +35,5 @@ $sql = "CREATE TABLE IF NOT EXISTS products (
     product_price VARCHAR(20),
     product_quantity INT(50),
     product_description VARCHAR(200)
-)";        
+)";
 $create_table = mysqli_query($conn, $sql);
-?>
-

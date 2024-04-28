@@ -64,15 +64,14 @@ if (isset($_POST['register'])) {
         require './myDB.php';
         $sql = "SELECT email FROM admin_details where email='$email'";
         $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0){
+        if (mysqli_num_rows($result) > 0) {
             $emailErr = "This email is already registered";
-        }else{
-        $insert = "INSERT INTO admin_details(firstname, lastname, email, password) values('$firstName', '$lastName', '$email', '$password')";
-        $insert_value = mysqli_query($conn, $insert);
-        if ($insert_value) {
-            header("location: login.php");
-        }
+        } else {
+            $insert = "INSERT INTO admin_details(firstname, lastname, email, password) values('$firstName', '$lastName', '$email', '$password')";
+            $insert_value = mysqli_query($conn, $insert);
+            if ($insert_value) {
+                header("location: login.php");
+            }
         }
     }
 }
-?>

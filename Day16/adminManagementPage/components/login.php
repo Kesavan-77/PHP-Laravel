@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php include './loginLogic.php' ?>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +11,21 @@
     <title>User Authentication System</title>
 </head>
 <style>
-    body{
+    body {
         background-color: hsl(26, 100%, 55%);
     }
-    .btn{
+
+    .btn {
         background-color: hsl(26, 100%, 55%);
         color: #fff;
     }
-    .btn:hover{
+
+    .btn:hover {
         background-color: hsl(26, 100%, 55%);
         color: #fff;
     }
 </style>
+
 <body class="d-flex p-5">
     <div class="container p-5 rounded" style="width: 500px;">
         <form method="POST" action="./login.php" id="login-form">
@@ -30,12 +34,12 @@
             <hr>
             <div class="form-group mt-4">
                 <label class="fs-5 fw-medium">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="<?php if(isset($email)) echo $email; ?>">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="<?php if (isset($email)) echo $email; ?>">
                 <?php echo $emailErr; ?>
             </div>
             <div class="form-group mt-4">
                 <label class="fs-5 fw-medium">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?php if(isset($password)) echo $password; ?>">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?php if (isset($password)) echo $password; ?>">
                 <?php echo $passwordErr; ?>
             </div>
             <button type="submit" class="btn mt-3" name="login">Login</button><br><br>
@@ -43,4 +47,5 @@
         </form>
     </div>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php header("location: collections.php"); ?>
 
 <head>
     <meta charset="UTF-8" />

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <?php require './registerLogic.php' ?> 
+<?php require './registerLogic.php' ?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +11,21 @@
     <title>User Authentication System</title>
 </head>
 <style>
-    body{
+    body {
         background-color: hsl(26, 100%, 55%);
     }
-    .btn{
+
+    .btn {
         background-color: hsl(26, 100%, 55%);
         color: #fff;
     }
-    .btn:hover{
+
+    .btn:hover {
         background-color: hsl(26, 100%, 55%);
         color: #fff;
     }
 </style>
+
 <body class="d-flex p-5">
     <div class="container p-5 rounded" style="width: 500px;">
         <form method="POST" action="" enctype="multipart/form-data" id="register-form">
@@ -30,27 +34,27 @@
             <hr>
             <div class="form-group mt-4">
                 <label class="fs-5 fw-medium">First name</label>
-                <input type="text" class="form-control" id="firstname" name="fname" placeholder="Enter your first name" value="<?php if(isset($firstName)) echo $firstName; ?>">
+                <input type="text" class="form-control" id="firstname" name="fname" placeholder="Enter your first name" value="<?php if (isset($firstName)) echo $firstName; ?>">
                 <?php echo $firstNameErr; ?>
             </div>
             <div class="form-group mt-4">
                 <label class="fs-5 fw-medium">Last name</label>
-                <input type="text" class="form-control" id="lastname" name="lname" placeholder="Enter your last name" value="<?php if(isset($lastName)) echo $lastName; ?>">
+                <input type="text" class="form-control" id="lastname" name="lname" placeholder="Enter your last name" value="<?php if (isset($lastName)) echo $lastName; ?>">
                 <?php echo $lastNameErr; ?>
             </div>
             <div class="form-group mt-4">
                 <label class="fs-5 fw-medium">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" value="<?php if(isset($email)) echo $email; ?>">
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" value="<?php if (isset($email)) echo $email; ?>">
                 <?php echo $emailErr; ?>
             </div>
             <div class="form-group mt-4">
                 <label class="fs-5 fw-medium">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?php if(isset($password)) echo $password; ?>">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" value="<?php if (isset($password)) echo $password; ?>">
                 <?php echo $passwordErr; ?>
             </div>
             <div class="form-group mt-4">
                 <label class="fs-5 fw-medium">Confirm Password</label>
-                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" value="<?php if(isset($confirmPassword)) echo $confirmPassword; ?>">
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" value="<?php if (isset($confirmPassword)) echo $confirmPassword; ?>">
                 <?php echo $confirmPasswordErr ?>
             </div>
             <button type="submit" class="btn mt-4" name="register">Register</button><br><br>
@@ -58,4 +62,5 @@
         </form>
     </div>
 </body>
+
 </html>

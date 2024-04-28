@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require './manageCollectionLogic.php' ?>
+<?php require './manageCollectionLogic.php';
+
+session_start();
+
+if (!$_SESSION['admin_mail']) {
+    header("location: /main.php");
+}
+
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header("location: /main.php");
+}
+
+
+?>
 
 <head>
     <meta charset="UTF-8" />
@@ -29,12 +43,13 @@
                 </ul>
             </nav>
             <div class="cart-user">
-                <div class="cart">
-                    <img src="../assets/icon-cart.svg" alt="cart" height="30px" width="30px" onclick="showCart()" />
-                </div>
+                <p>Welcome <?php echo $_SESSION['name']; ?></p>
                 <div class="user">
                     <img src="../assets/image-avatar.png" alt="user" height="50px" width="50px" />
                 </div>
+                <form method="POST" action="" class="logout">
+                    <button type="submit" name="logout" class="btn-logout">Logout</button>
+                </form>
             </div>
         </div>
         <hr />
@@ -65,12 +80,12 @@
                     <div>
                         <label for="collection">Collection:</label><br>
                         <select name="collection" id="collection">
-                            <?php 
+                            <?php
                             $sql = "SELECT collection_name FROM collections ORDER BY collection_name;";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<option value=".$row['collection_name'].">".$row['collection_name'] . "</option>";
+                                    echo "<option value=" . $row['collection_name'] . ">" . $row['collection_name'] . "</option>";
                                 }
                             } ?>
                         </select><br>
@@ -92,12 +107,12 @@
                     <div>
                         <label for="collection">Collection:</label><br>
                         <select name="deleteOption" id="collection">
-                            <?php 
+                            <?php
                             $sql = "SELECT collection_name FROM collections ORDER BY collection_name;";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<option value=".$row['collection_name'].">".$row['collection_name'] . "</option>";
+                                    echo "<option value=" . $row['collection_name'] . ">" . $row['collection_name'] . "</option>";
                                 }
                             } ?>
                         </select><br>
