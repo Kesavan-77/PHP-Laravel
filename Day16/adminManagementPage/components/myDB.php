@@ -31,7 +31,7 @@ $sql = "CREATE TABLE IF NOT EXISTS products (
     collection_name VARCHAR(20) NOT NULL,
     product_name VARCHAR(20),
     product_id VARCHAR(10) UNIQUE,
-    product_img VARCHAR(100), 
+    product_img VARCHAR(500), 
     product_price VARCHAR(20),
     product_quantity INT(50),
     product_description VARCHAR(200)
