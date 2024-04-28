@@ -22,6 +22,13 @@ if (isset($_POST['action'])) {
         setcookie($cookie_name . "-search", $search, time() + (86400 * 30), "/");
     }
 
+    if (isset($_POST['min_price'], $_POST['max-price']) && !empty($_POST['min-price']) && !empty($_POST['max_price'])){
+        $min = $_POST['min_price'];
+        $max = $_POST['max-price'];
+        $sql .= " AND product_price >= '$min' AND product_price<='$max'";
+    }
+    
+
     $sort = '';
 
     if (isset($_POST['sort']) && !empty($_POST['sort'])) {

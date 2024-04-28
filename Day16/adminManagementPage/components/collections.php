@@ -19,7 +19,9 @@ if (isset($_POST['logout'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/style.css" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>Admin Management</title>
 
 </head>
@@ -105,19 +107,8 @@ if (isset($_POST['logout'])) {
                     <h2>Select by price</h2>
                     <hr>
                     <ul class="filter-price-list">
-                        <div class="double_range_slider_box">
-                            <div class="double_range_slider">
-                                <span class="range_track" id="range_track"></span>
-
-                                <label for="price">Minimum price</label><br>
-                                <input type="range" class="min" min="0" max="100" value="0" step="0" /><br><br>
-                                <label for="price">Maximum price</label><br>
-                                <input type="range" class="max" min="0" max="100" value="20" step="0" />
-
-                                <div class="minvalue"></div>
-                                <div class="maxvalue"></div>
-                            </div>
-                        </div>
+                        <label for="price">0-100000</label><br><br>
+                        <input type="range" id="points" name="points" min="0" max="100000" value="0">
                     </ul>
                 </div>
             </div>
@@ -158,6 +149,8 @@ if (isset($_POST['logout'])) {
             var collection = get_filter_data('collection-check');
             var sort = get_filter_data('sort');
             var search = $('.search').val();
+            var min_price = $('#price_range_min').val();
+            var max_price = $('#price_range_max').val();
 
             $.ajax({
                 url: 'action.php',
@@ -167,6 +160,8 @@ if (isset($_POST['logout'])) {
                     collection: collection,
                     sort: sort,
                     search: search,
+                    min_price: min_price,
+                    max_price: max_price
                 },
                 success: function(response) {
                     $('.display-section').html(response);
