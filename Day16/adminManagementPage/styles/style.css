@@ -151,3 +151,41 @@ select{
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.display-collection{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.filter-section{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 7px;
+    height: 100%;
+    background-color: #f3f3f3;
+    position: sticky;
+}
+.filter-section label{
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.display-section{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.display-section .product-thumbnail{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 10px;
+    border: 2px solid var(--Grayish-blue);
+    padding: 1rem;
+    border-radius: 5px;
+    height: fit-content;
+}

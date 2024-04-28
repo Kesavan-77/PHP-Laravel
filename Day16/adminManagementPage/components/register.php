@@ -9,7 +9,20 @@
     <link rel="stylesheet" type="text/css" href="../styles/main.css" href="">
     <title>User Authentication System</title>
 </head>
-<body class="d-flex p-5 bg-primary">
+<style>
+    body{
+        background-color: hsl(26, 100%, 55%);
+    }
+    .btn{
+        background-color: hsl(26, 100%, 55%);
+        color: #fff;
+    }
+    .btn:hover{
+        background-color: hsl(26, 100%, 55%);
+        color: #fff;
+    }
+</style>
+<body class="d-flex p-5">
     <div class="container p-5 rounded" style="width: 500px;">
         <form method="POST" action="" enctype="multipart/form-data" id="register-form">
             <h1 class="text-center fw-bold">ShopZone</h1><br>
@@ -40,7 +53,7 @@
                 <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" value="<?php if(isset($confirmPassword)) echo $confirmPassword; ?>">
                 <?php echo $confirmPasswordErr ?>
             </div>
-            <button type="submit" class="btn btn-primary mt-4" name="register">Register</button><br><br>
+            <button type="submit" class="btn mt-4" name="register">Register</button><br><br>
             <a href="../components/login.php" class="text-danger">Already have an account?</a>
         </form>
     </div>

@@ -10,14 +10,27 @@
 
     <title>ShopZone</title>
 </head>
-<body class="d-flex p-5 bg-primary">
+<style>
+    body{
+        background-color: hsl(26, 100%, 55%);
+    }
+    .btn{
+        background-color: hsl(26, 100%, 55%);
+        color: #fff;
+    }
+    .btn:hover{
+        background-color: hsl(26, 100%, 55%);
+        color: #fff;
+    }
+</style>
+<body class="d-flex p-5">
     <div class="container p-5 rounded" style="width: 400px;">
         <div class="main-content">
-            <h1>User Authentication System</h1>
+            <h1>ShopZone</h1>
             <hr>
-            <p>Maintain your details and password</p>
+            <p>Admin portal for shopzone</p>
             <a href="./components/login.php">
-            <button type="button" class="btn btn-primary btn-lg">Create your own account</button></a>
+            <button type="button" class="btn btn-lg">Admin login</button></a>
         </div>
     </div>
 </body>
