@@ -222,3 +222,8 @@ select{
     border-radius: 5px;
     cursor: pointer;
 }
+
+input[type="range"] {
+    width: 300px;
+    margin: 0 10px;
+}

@@ -19,6 +19,9 @@ if (isset($_POST['logout'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/style.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>Admin Management</title>
 </head>
 
@@ -111,9 +114,9 @@ if (isset($_POST['logout'])) {
                 <div class="p-input">
                     <div>
                         <label>Enter collection name: </label><br>
-                        <select name="updateCollection" id="collection" aria-placeholder="select">
+                        <select name="updateCollection" id="update-collection">
                             <?php
-                            $sql = "SELECT collection_name FROM collections ORDER BY collection_name;";
+                            $sql = "SELECT collection_name FROM collections ORDER BY collection_name";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
@@ -124,7 +127,7 @@ if (isset($_POST['logout'])) {
                     </div>
                     <div>
                         <label>Enter Product ID: </label><br>
-                        <select name="up-id" id="product_id">
+                        <select name="up-id" id="update_product_id">
                             <?php
                             $sql = "SELECT product_id FROM products ORDER BY product_id";
                             $result = mysqli_query($conn, $sql);
@@ -143,27 +146,23 @@ if (isset($_POST['logout'])) {
                     <div>
                         <label>Enter Product name: </label><br>
                         <input type="text" name="up-name" placeholder="Enter product name"><br>
-                        <p><?php echo $pnameErr ?></p>
                     </div>
                     <div>
                         <label>Enter Image Url: </label><br>
                         <input type="text" name="up-image" placeholder="Enter image url"><br>
-                        <p><?php echo $pImageErr ?></p>
                     </div>
                     <div>
                         <label>Enter product price in rupees: </label><br>
                         <input type="text" name="up-price" placeholder="Enter product price"><br>
-                        <p><?php echo $pPriceErr ?></p>
                     </div>
                     <div>
                         <label>Enter product quantity: </label><br>
                         <input type="text" name="up-quantity" placeholder="Enter product price"><br>
-                        <p><?php echo $pQuantityErr ?></p>
                     </div>
                     <div>
                         <label>Description about Product: </label><br>
                         <input type="text" name="up-des" placeholder="Description about product:"><br>
-                        <p><?php echo $pDesErr ?></p>
+                        
                     </div>
                     <button type="submit" name="update-product">Submit</button>
                 </div>
@@ -175,7 +174,7 @@ if (isset($_POST['logout'])) {
                 <div class="p-input">
                     <div>
                         <label>Enter collection name: </label><br>
-                        <select name="deleteCollection" id="collection">
+                        <select name="deleteCollection" id="delete-collection" class="collection-dropdown">
                             <?php
                             $sql = "SELECT collection_name FROM collections ORDER BY collection_name;";
                             $result = mysqli_query($conn, $sql);
@@ -188,7 +187,7 @@ if (isset($_POST['logout'])) {
                     </div>
                     <div>
                         <label>Enter Product ID: </label><br>
-                        <select name="dp-id" id="product_id">
+                        <select name="dp-id" id="delete_product_id">
                             <?php
                             $sql = "SELECT product_id FROM products ORDER BY product_id";
                             $result = mysqli_query($conn, $sql);
@@ -208,6 +207,43 @@ if (isset($_POST['logout'])) {
         </div>
     </main>
 </body>
+<script>
+    $(function() {
+        $('#update-collection').change(function() {
+            var update = 'data';
+            var updateCollection = $(this).val();
 
+
+            $.ajax({
+                url: 'action.php',
+                method: 'POST',
+                data: {
+                    update: update,
+                    updateCollection: updateCollection
+                },
+                success: function(response) {
+                    $('#update_product_id').html(response);
+                }
+            });
+        })
+
+        $('#delete-collection').change(function() {
+            var update = 'data';
+            var deleteCollection = $(this).val();
+            $.ajax({
+                url: 'action.php',
+                method: 'POST',
+                data: {
+                    update: update,
+                    deleteCollection: deleteCollection
+                },
+                success: function(response) {
+                    $('#delete_product_id').html(response);
+                }
+            });
+        })
+
+    })
+</script>
 
 </html>

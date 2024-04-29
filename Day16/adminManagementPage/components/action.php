@@ -5,10 +5,53 @@ session_start();
 
 $admin_email = $_SESSION['admin_mail'];
 
-$cookie_name = $email;
+$cookie_name = str_replace("@", "",$admin_email);
+
+if (isset($_POST['update'])) {
+
+    if (isset($_POST['updateCollection'])) {
+        $updateCollection = $_POST['updateCollection'];
+
+        $sql = "SELECT product_id FROM products where collection_name = '$updateCollection' ORDER BY product_id";
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<option value='" . $row['product_id'] . "'>" . $row['product_id'] . "</option>";
+            }
+        } else {
+            echo "<option value='no records found'>no records found</option>";
+        }
+    }
+
+    if (isset($_POST['deleteCollection'])) {
+
+        $deleteCollection = $_POST['deleteCollection'];
+        $sql = "SELECT product_id FROM products where collection_name = '$deleteCollection' ORDER BY product_id";
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<option value='" . $row['product_id'] . "'>" . $row['product_id'] . "</option>";
+            }
+        } else {
+            echo "<option value='no records found'>no records found</option>";
+        }
+    }
+}
 
 if (isset($_POST['action'])) {
     $sql = "SELECT * FROM products WHERE product_name!=''";
+
+    if (isset($_POST['startValue']) && isset($_POST['endValue'])) {
+        $startValue = $_POST['startValue'];
+        $endValue = $_POST['endValue'];
+
+        setcookie($cookie_name . "-startValue", $startValue, time() + (86400 * 30), "/");
+        setcookie($cookie_name . "-endValue", $endValue, time() + (86400 * 30), "/");
+
+        $sql .= " AND product_price BETWEEN $startValue AND $endValue";
+    }
 
     if (isset($_POST['collection']) && !empty($_POST['collection'])) {
         $collection = implode("','", $_POST['collection']);
@@ -22,18 +65,9 @@ if (isset($_POST['action'])) {
         setcookie($cookie_name . "-search", $search, time() + (86400 * 30), "/");
     }
 
-    if (isset($_POST['min_price'], $_POST['max-price']) && !empty($_POST['min-price']) && !empty($_POST['max_price'])){
-        $min = $_POST['min_price'];
-        $max = $_POST['max-price'];
-        $sql .= " AND product_price >= '$min' AND product_price<='$max'";
-    }
-    
-
     $sort = '';
-
     if (isset($_POST['sort']) && !empty($_POST['sort'])) {
         $sort = implode("','", $_POST['sort']);
-
         switch ($sort) {
             case 'sort-price-low':
                 $sql .= " ORDER BY product_price ASC";
@@ -54,31 +88,42 @@ if (isset($_POST['action'])) {
     }
 
     $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) {
+
+    if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             echo '<div class="product-thumbnail">
-            <img src="' . $row['product_img'] . '" alt="product" height="250px" width="200px">
-            <h2>' . $row['product_name'] . '</h2>
-            <p>' . $row['collection_name'] . '</p>
-            <h4>$' . $row['product_price'] . '</h4>
-            </div>';
+                    <img src="' . $row['product_img'] . '" alt="product" height="250px" width="200px">
+                    <h2>' . $row['product_name'] . '</h2>
+                    <p>' . $row['collection_name'] . '</p>
+                    <h4>$' . $row['product_price'] . '</h4>
+                  </div>';
         }
     } else {
         echo '<p>No products available</p>';
     }
-} else {
+}
+else {
 
     $sql = "SELECT * FROM products WHERE product_name!=''";
-
-    if ($_COOKIE[$cookie_name . "-collection"]) {
+    $startValue = 0;
+    $endValue = 100000;
+    if (isset($_COOKIE[$cookie_name . '-startValue'])) {
+        $startValue = $_COOKIE[$cookie_name . '-startValue'];
+        echo "<h1>hii</h1>";
+    }
+    if (isset($_COOKIE[$cookie_name . '-endValue'])) {
+        $endValue = $_COOKIE[$cookie_name . '-endValue'];
+    }
+    
+    if (isset($_COOKIE[$cookie_name . "-collection"])) {
         $collection = $_COOKIE[$cookie_name . "-collection"];
         $sql .= " AND collection_name IN ('$collection')";
     }
-    if ($_COOKIE[$cookie_name . "-search"]) {
+    if (isset($_COOKIE[$cookie_name . "-search"])) {
         $search = $_COOKIE[$cookie_name . "-search"];
         $sql .= " AND product_name LIKE '%$search%'";
     }
-    if ($_COOKIE[$cookie_name . "-sort"]) {
+    if (isset($_COOKIE[$cookie_name . "-sort"])) {
         $sort = $_COOKIE[$cookie_name . "-sort"];
         switch ($sort) {
             case 'sort-price-low':
@@ -97,6 +142,7 @@ if (isset($_POST['action'])) {
                 break;
         }
     }
+    
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {

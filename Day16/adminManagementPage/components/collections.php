@@ -4,6 +4,8 @@
 
 session_start();
 
+
+
 if (!$_SESSION['admin_mail']) {
     header("location: /main.php");
 }
@@ -58,7 +60,7 @@ if (isset($_POST['logout'])) {
                 <div class="filter-search">
                     <hr>
                     <label>Search product</label>
-                    <input type="text" class="search-check search" placeholder="search product">
+                    <input type="text" class="search-check search product-check" placeholder="search product">
                 </div><br>
                 <div class="filter-collection">
                     <h2>Select by collection</h2>
@@ -107,8 +109,13 @@ if (isset($_POST['logout'])) {
                     <h2>Select by price</h2>
                     <hr>
                     <ul class="filter-price-list">
-                        <label for="price">0-100000</label><br><br>
-                        <input type="range" id="points" name="points" min="0" max="100000" value="0">
+                        <label for="price">$<span class="min">0</span> - $<span class="max">100000</span></label><br><br>
+                        <div class="slider-container">
+                            <label>Minimum price</label><br><br>
+                            <input type="range" class="product-check" id="startRange" min="0" max="100000" step="1" value="0"><br><br>
+                            <label>Maximum price</label><br><br>
+                            <input type="range" class="product-check" id="endRange" min="0" max="100000" step="-1" value="100000">
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -141,6 +148,9 @@ if (isset($_POST['logout'])) {
             data: {},
             success: function(response) {
                 $('.display-section').html(response);
+            },
+            error: function(xhr, status, error) {
+                console.error("An error occurred: " + error);
             }
         });
 
@@ -149,8 +159,22 @@ if (isset($_POST['logout'])) {
             var collection = get_filter_data('collection-check');
             var sort = get_filter_data('sort');
             var search = $('.search').val();
-            var min_price = $('#price_range_min').val();
-            var max_price = $('#price_range_max').val();
+
+            // for range
+            const startRange = $('#startRange');
+            const endRange = $('#endRange');
+            let startValue = parseInt(startRange.val());
+            let endValue = parseInt(endRange.val()) >= startValue ? parseInt(endRange.val()) : startValue;
+
+            startRange.on('input', function() {
+                startValue = parseInt($(this).val());
+            });
+            endRange.on('input', function() {
+                endValue = parseInt($(this).val()) < startValue ? startValue : parseInt($(this).val());
+            });
+
+            $('.min').text(startValue);
+            $('.max').text(endValue);
 
             $.ajax({
                 url: 'action.php',
@@ -160,11 +184,14 @@ if (isset($_POST['logout'])) {
                     collection: collection,
                     sort: sort,
                     search: search,
-                    min_price: min_price,
-                    max_price: max_price
+                    startValue: startValue,
+                    endValue: endValue
                 },
                 success: function(response) {
                     $('.display-section').html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error("An error occurred: " + error);
                 }
             });
         });
@@ -182,6 +209,9 @@ if (isset($_POST['logout'])) {
                 },
                 success: function(response) {
                     $('.display-section').html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error("An error occurred: " + error);
                 }
             });
         });
