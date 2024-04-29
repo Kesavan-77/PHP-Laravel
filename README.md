@@ -67,3 +67,14 @@
 ### Topics covered
 
 ---> XML, Promises and Async/Await functions
+
+
+## Day15
+### Topics covered
+
+---> mySql quries
+
+## Day16
+### Topics covered
+
+---> Admin management system for E-commerce task completed
