@@ -43,6 +43,9 @@ if (isset($_POST['update'])) {
 if (isset($_POST['action'])) {
     $sql = "SELECT * FROM products WHERE product_name!=''";
 
+    setcookie($cookie_name . "-startValue", $startValue, time() - 3600, "/");
+    setcookie($cookie_name . "-endValue", $endValue, time() - 3600, "/");
+
     if (isset($_POST['startValue']) && isset($_POST['endValue'])) {
         $startValue = $_POST['startValue'];
         $endValue = $_POST['endValue'];
@@ -53,12 +56,14 @@ if (isset($_POST['action'])) {
         $sql .= " AND product_price BETWEEN $startValue AND $endValue";
     }
 
+    setcookie($cookie_name . "-collection", $collection, time() - 3600, "/");
     if (isset($_POST['collection']) && !empty($_POST['collection'])) {
         $collection = implode("','", $_POST['collection']);
         $sql .= " AND collection_name IN ('$collection')";
         setcookie($cookie_name . "-collection", $collection, time() + (86400 * 30), "/");
     }
 
+    setcookie($cookie_name . "-search", $search, time() - 3600, "/");
     if (isset($_POST['search']) && !empty($_POST['search'])) {
         $search = $_POST['search'];
         $sql .= " AND product_name LIKE '%$search%'";
@@ -66,6 +71,7 @@ if (isset($_POST['action'])) {
     }
 
     $sort = '';
+    setcookie($cookie_name . "-sort", $sort, time() - 3600, "/");
     if (isset($_POST['sort']) && !empty($_POST['sort'])) {
         $sort = implode("','", $_POST['sort']);
         switch ($sort) {
@@ -109,7 +115,6 @@ else {
     $endValue = 100000;
     if (isset($_COOKIE[$cookie_name . '-startValue'])) {
         $startValue = $_COOKIE[$cookie_name . '-startValue'];
-        echo "<h1>hii</h1>";
     }
     if (isset($_COOKIE[$cookie_name . '-endValue'])) {
         $endValue = $_COOKIE[$cookie_name . '-endValue'];
