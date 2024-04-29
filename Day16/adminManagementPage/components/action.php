@@ -5,7 +5,7 @@ session_start();
 
 $admin_email = $_SESSION['admin_mail'];
 
-$cookie_name = str_replace("@", "",$admin_email);
+$cookie_name = str_replace("@gmail.com", "",$admin_email);
 
 if (isset($_POST['update'])) {
 
