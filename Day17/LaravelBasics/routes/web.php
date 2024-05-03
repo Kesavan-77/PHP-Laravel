@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\formValidation;
+use App\Http\Controllers\Operations;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,25 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts/home');
 });
 
-Route::get('/home', function () {
-    return view('home',["name"=>"kesavan"]);
-});
+Route::post('/add', [Operations::class, 'AddData']);
 
-Route::post('/success',[formValidation::class, 'formValidate'] );
+Route::post('/update', [Operations::class, 'UpdateData']);
 
-Route::get('/feedback', function () {
-    return view('feedback',["name"=>"kesavan"]);
-});
-
-Route::get('/blog', function () {
-    return view('blog',["name"=>"kesavan"]);
-});
-
-Route::get('/blog/{id?}', function ($id='news0') {
-    return view('blog-content',["id"=>$id,"name"=>"kesavan"]);
-});
-
-Route::get('/db', [formValidation::class, 'dbDetails']);
+Route::post('/delete', [Operations::class, 'DeleteData']);
