@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Operations;
+use App\Http\Controllers\Validation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts/home');
+Route::prefix('home')->group(function () {
+    Route::put('{id}', [Validation::class, 'update'])->name('home.update');
+    Route::delete('{id}', [Validation::class, 'destroy'])->name('home.destroy');
+    Route::resource('', Validation::class);
 });
-
-Route::post('/add', [Operations::class, 'AddData']);
-
-Route::post('/update', [Operations::class, 'UpdateData']);
-
-Route::post('/delete', [Operations::class, 'DeleteData']);

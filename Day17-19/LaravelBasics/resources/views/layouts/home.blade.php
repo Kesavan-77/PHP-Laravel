@@ -60,10 +60,12 @@
         border-radius: 7px;
         cursor: pointer;
     }
-    th,td{
-        font-size:18px;
-        padding-left:5rem;
-        padding-top:1rem;
+
+    th,
+    td {
+        font-size: 18px;
+        padding-left: 5rem;
+        padding-top: 1rem;
     }
 </style>
 
@@ -71,7 +73,7 @@
     <div class="container">
         <div class="form-container">
             <div>
-                <form class='add-form' action='/add' method="POST">
+                <form class='add-form' action='/home' method="POST">
                     @csrf
                     <h1>Add form</h1>
                     <label>Enter your id: </label><br>
@@ -84,8 +86,9 @@
                 </form>
             </div>
             <div>
-                <form class='update-form' action='/update' method="POST">
+                <form class='update-form' action='/home/{id}' method="POST"> <!-- Change method to POST -->
                     @csrf
+                    @method('PUT') <!-- Add method spoofing for PUT -->
                     <h1>Update form</h1>
                     <label>Enter your id: </label><br>
                     <input type="text" name="user-id" placeholder="Enter your id" required><br><br>
@@ -96,9 +99,11 @@
                     <button type="submit">Submit</button>
                 </form>
             </div>
+
             <div>
-                <form class='delete-form' action='/delete' method="POST">
+                <form class='delete-form' action='/home/{$id}' method="POST">
                     @csrf
+                    @method('DELETE')
                     <h1>Delete form</h1>
                     <label>Enter your id: </label><br>
                     <input type="text" name="user-id" placeholder="Enter your id" required><br><br>
@@ -125,7 +130,7 @@
                         <tr>
                     @endforeach
                 @endif
-                </table>
+            </table>
         </div>
     </div>
 </body>

@@ -56,8 +56,4 @@ class Operations extends Controller
 
         return view('layouts/home', ['userDetails' => $userDetails]);
     }
-
-    public function DisplayData()
-    {
-    }
 }
