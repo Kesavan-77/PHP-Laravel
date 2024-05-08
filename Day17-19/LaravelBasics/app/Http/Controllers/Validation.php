@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class Validation extends Controller
 {
@@ -14,7 +14,7 @@ class Validation extends Controller
      */
     public function index()
     {
-        return view('layouts.home');
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class Validation extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -35,19 +35,15 @@ class Validation extends Controller
      */
     public function store(Request $request)
     {
-        $userId = $request->input('user-id');
-        $userName = $request->input('user-name');
-        $userEmail = $request->input('user-email');
+        $age = $request->age >= 18 ? true : false;
 
-        DB::table('userDetails')->insert([
-            'id' => $userId,
-            'name' => $userName,
-            'email' => $userEmail
+        Student::create([
+            'name' => $request->name,
+            'class' => $request->class,
+            'address' => $request->address,
+            'isAdult' => $age
         ]);
-
-        $userDetails = DB::table('userDetails')->get();
-
-        return view('layouts/home', ['userDetails' => $userDetails]);
+        return redirect('/');
     }
 
     /**
@@ -56,10 +52,9 @@ class Validation extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
         //
-        
     }
 
     /**
@@ -82,20 +77,16 @@ class Validation extends Controller
      */
     public function update(Request $request, $id)
     {
-        $userId = $request->input('user-id');
-        $userName = $request->input('user-name');
-        $userEmail = $request->input('user-email');
-
-        DB::table('userDetails')
-            ->where('id', $userId)
+        $age = $request->age >= 18 ? true : false;
+        Student::where('id', $request->id)
             ->update([
-                'name' => $userName,
-                'email' => $userEmail
+                'name' => $request->name,
+                'class' => $request->class,
+                'address' => $request->address,
+                'isAdult' => $age
             ]);
 
-        $userDetails = DB::table('userDetails')->get();
-
-        return view('layouts/home', ['userDetails' => $userDetails]);
+        return redirect('/');
     }
 
     /**
@@ -104,19 +95,9 @@ class Validation extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        $userId = $request->input('user-id');
-        $userEmail = $request->input('user-email');
-
-        DB::table('userDetails')
-            ->where('id', $userId)
-            ->where('email', $userEmail)
-            ->delete();
-
-        $userDetails = DB::table('userDetails')->get();
-
-        return view('layouts/home', ['userDetails' => $userDetails]);
+        Student::where('id', $id)->delete();
+        return redirect('/');
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Student;
 use App\Http\Controllers\Validation;
+use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,21 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/student',function(){
-    return Student::all();
+Route::get('/', function () {
+    $data = Student::all();
+    return view('home', compact('data'));
 });
 
-Route::get('/student-create',function(){
-    return Student::create([
-        'name'=>"kesavan",
-        'class'=>"it",
-        'address'=>"ooty",
-        'isAdult'=>true
-    ]);
-});
-
-Route::prefix('home')->group(function () {
-    Route::put('{id}', [Validation::class, 'update'])->name('home.update');
-    Route::delete('{id}', [Validation::class, 'destroy'])->name('home.destroy');
-    Route::resource('', Validation::class);
-});
+Route::resource('form',Validation::class);

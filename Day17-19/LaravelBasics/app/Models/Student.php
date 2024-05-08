@@ -13,7 +13,7 @@ class Student extends Model
 
     protected $fillable = ['name','class','address','isAdult'];
 
-    protected $casts = ['isAdult'=>'boolean'];
+    protected $casts = ['isAdult'=>'string'];
 
     protected $hidden = ['created_at','updated_at'];
 
