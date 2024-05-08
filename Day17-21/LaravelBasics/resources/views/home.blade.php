@@ -20,8 +20,8 @@
             <div class="container">
                 <a class="navbar-brand fw-bold text-secondary">My Collections</a>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control me-2" id="search-user" type="search" placeholder="Search">
+                    <button class="btn btn-outline-success" type="button">Search</button>
                 </form>
             </div>
         </nav>
@@ -48,7 +48,7 @@
                     <th colspan="2" class="text-center">OPERATIONS</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class='display-section'>
                 @foreach ($data as $user)
                     <tr class="user-info">
                         <td>{{ $user->id }}</td>
@@ -119,6 +119,42 @@
 
         });
 
+        //validate data for addUser
+        $('#add-user').on('click', function(e) {
+            let addName = $('#add-name').val();
+            let addClass = $('#add-class').val();
+            let addAddress = $('#add-address').val();
+            let addAge = $('#add-age').val();
+
+            let validation = true;
+
+            if (addName.trim().length <= 0 || addName.match(/[1-9]/g)) {
+                validation = false;
+                $('#add-name-err').removeClass('hidden');
+            } else $('#add-name-err').addClass('hidden');
+
+            if (addClass.trim().length <= 0 || addClass.match(/[1-9]/g)) {
+                validation = false;
+                $('#add-class-err').removeClass('hidden');
+            } else $('#add-class-err').addClass('hidden');
+
+            if (addAddress.trim().length <= 0 || !addAddress.match(/[1-9a-zA-z]/g)) {
+                validation = false;
+                $('#add-address-err').removeClass('hidden');
+            } else $('#add-address-err').addClass('hidden');
+
+            if (addAge.trim().length <= 0 || parseInt(addAge) < 0 || parseInt(addAge) > 150) {
+                validation = false;
+                $('#add-age-err').removeClass('hidden');
+            } else $('#add-age-err').addClass('hidden');
+
+            if (validation) {
+                $('#addUserForm').attr('method', 'POST');
+                $('#addUserForm').attr('action', '{{ route('form.store') }}');
+            } else {
+                e.preventDefault();
+            }
+        })
 
         //validate data for updateUser
         $('#update-user').on('click', function(e) {
@@ -156,46 +192,43 @@
             } else {
                 e.preventDefault();
             }
-
-
         })
 
-        //validate data for addUser
-        $('#add-user').on('click', function(e) {
-            let addName = $('#add-name').val();
-            let addClass = $('#add-class').val();
-            let addAddress = $('#add-address').val();
-            let addAge = $('#add-age').val();
+        $('#search-user').keyup(function(){
+    var search = $('#search-user').val();
+    $.ajax({
+        url: '/getData',
+        method: 'POST',
+        data: {
+            _token: '{{ csrf_token() }}',
+            search: search
+        },
+        success: function(response) {
+            let data = response.message;
+            let html = '';
+            data.forEach(function(user) {
+                html += `
+                    <tr class="user-info">
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.class}</td>
+                        <td>${user.address}</td>
+                        <td>${user.isAdult}</td>
+                        <td class='text-center'><button type='button' class='btn btn-warning edit-user-btn'>Edit</button></td>
+                        <td>
+                            <form action='{{ route('form.destroy', ['form' => ':id']) }}'.replace(':id', user.id) method='POST'>
+                                @csrf
+                                @method('DELETE')
+                                <button type='submit' class='btn btn-danger delete-user-btn'>Delete</button>
+                            </form>
+                        </td>
+                    </tr>`;
+            });
+            $('.display-section').html(html);
+        }
+    });
+});
 
-            let validation = true;
-
-            if (addName.trim().length <= 0 || addName.match(/[1-9]/g)) {
-                validation = false;
-                $('#add-name-err').removeClass('hidden');
-            } else $('#add-name-err').addClass('hidden');
-
-            if (addClass.trim().length <= 0 || addClass.match(/[1-9]/g)) {
-                validation = false;
-                $('#add-class-err').removeClass('hidden');
-            } else $('#add-class-err').addClass('hidden');
-
-            if (addAddress.trim().length <= 0 || !addAddress.match(/[1-9a-zA-z]/g)) {
-                validation = false;
-                $('#add-address-err').removeClass('hidden');
-            } else $('#add-address-err').addClass('hidden');
-
-            if (addAge.trim().length <= 0 || parseInt(addAge) < 0 || parseInt(addAge) > 150) {
-                validation = false;
-                $('#add-age-err').removeClass('hidden');
-            } else $('#add-age-err').addClass('hidden');
-
-            if (validation) {
-                $('#addUserForm').attr('method', 'POST');
-                $('#addUserForm').attr('action', '{{ route('form.store') }}');
-            } else {
-                e.preventDefault();
-            }
-        })
     });
 </script>
 

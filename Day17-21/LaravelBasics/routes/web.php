@@ -20,4 +20,6 @@ Route::get('/', function () {
     return view('home', compact('data'));
 });
 
+Route::post('/getData', [Validation::class, 'getData'])->name('getData');
+
 Route::resource('form',Validation::class);
