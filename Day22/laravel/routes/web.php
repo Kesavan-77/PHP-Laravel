@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Mark;
+use App\Models\Student;
+use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return Mark::with('student')->where('student_id',23)->get();
+    return Comment::with('posts')->where('post_id',1)->get();
 });
+
