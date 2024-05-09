@@ -19,12 +19,20 @@ class Validation extends Controller
     {
         $age = $request->age >= 18 ? true : false;
 
-        Student::create([
-            'name' => $request->name,
-            'class' => $request->class,
-            'address' => $request->address,
-            'isAdult' => $age
-        ]);
+        $student = new Student;
+
+        $student->name = $request->name;
+        $student->class = $request->class;
+        $student->address = $request->address;
+        $student->isAdult = $age;
+        $student->save();
+
+        // Student::create([
+        //     'name' => $request->name,
+        //     'class' => $request->class,
+        //     'address' => $request->address,
+        //     'isAdult' => $age
+        // ]);
         return redirect('/');
     }
 
@@ -38,13 +46,22 @@ class Validation extends Controller
     public function update(Request $request, $id)
     {
         $age = $request->age >= 18 ? true : false;
-        Student::where('id', $request->id)
-            ->update([
-                'name' => $request->name,
-                'class' => $request->class,
-                'address' => $request->address,
-                'isAdult' => $age
-            ]);
+
+        $student = Student::find($request->id);
+
+        $student->name = $request->name;
+        $student->class = $request->class;
+        $student->address = $request->address;
+        $student->isAdult = $age;
+        $student->save();
+
+        // Student::where('id', $request->id)
+        //     ->update([
+        //         'name' => $request->name,
+        //         'class' => $request->class,
+        //         'address' => $request->address,
+        //         'isAdult' => $age
+        //     ]);
 
         return redirect('/');
     }
