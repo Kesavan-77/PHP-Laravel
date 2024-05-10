@@ -12,6 +12,10 @@ class Student extends Model
 
     protected $table = 'students';
 
+    public $timestamps = false;
+
+    protected $hidden = ["created_at", "updated_at"];
+
     protected $fillable = ['id','name','class'];
 
     public function mark(){

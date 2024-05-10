@@ -11,6 +11,10 @@ class Comment extends Model
 
     protected $table = 'comments';
 
+    public $timestamps = false;
+
+    protected $hidden = ["created_at", "updated_at"];
+
     protected $fillable = ['id','post_id','comments'];
 
     public function posts(){

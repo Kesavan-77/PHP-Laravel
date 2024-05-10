@@ -12,6 +12,10 @@ class Post extends Model
 
     protected $table = 'posts';
 
+    public $timestamps = false;
+
+    protected $hidden = ["created_at", "updated_at"];
+
     protected $fillable = ['id','post_name'];
 
     public function comments(){
