@@ -16,9 +16,26 @@ use App\Models\Comment;
 |
 */
 
-Route::get('/Collection/{id?}', function ($id) {
+Route::get('/Collection', function () {
 
-    return $id;
+    // $arr = collect([20,30,40,23,33,21]);
+
+    // return $arr->filter(function($value,$key){
+    //     return $value < 30 && $key>2;
+    // });
+
+    // return $arr->map(function($val){
+    //     return $val * $val;
+    // });
+
+    $arr2 = collect([
+        ['name'=>'bob','age'=>23],
+        ['name'=>'alice','age'=>30]
+    ]);
+
+    return $arr2->mapWithKeys(function($item){
+        return [$item['name'] => $item['age']];
+    });
 });
 
 Route::get('/',function(){
@@ -49,9 +66,9 @@ Route::get('/',function(){
     // return view('welcome', compact('result'));
 
 
-    $comments = Comment::all();
+    // $comments = Comment::all();
 
-    $comments = $comments->load('post');
+    // $comments = $comments->load('post');
 
-    return view('welcome',compact('comments'));
+    // return view('welcome',compact('comments'));
 });
