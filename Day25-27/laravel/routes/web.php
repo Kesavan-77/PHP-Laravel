@@ -1,9 +1,8 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\Request;
-
+use App\Models\User;
+use App\Http\Controllers\JokeController;
+use App\Http\Controllers\GalleryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,34 +14,20 @@ use Symfony\Component\HttpFoundation\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/role',function(){
-    return redirect('/');
-});
-
-Route::get('/success',function(){
-    return redirect('/role');
-});
-
-Route::post('/role', function (Request $request) {
-    return view('role', ['name' => $request['name']]);
-})->middleware('nameAuth');
-
-Route::post('/success', function (Request $request) {
-    return view('success', ['role' => $request['role'], 'name' => $request['name']]);
-})->middleware('roleAuth');
-
-
-// Route::middleware(['nameAuth','roleAuth'])->group(function () {
-
-//     Route::post('/role', function (Request $request) {
-//         return view('role', ['name' => $request['name']]);
-//     });
-
-//     Route::post('/success', function (Request $request) {
-//         return view('success', ['role' => $request['role'], 'name' => $request['name']]);
-//     });
+// Route::get('/',function(){
+//     return view('welcome');
 // });
+
+// Route::get('/paginate', function () {
+//     $users = User::paginate(15);
+//     return view('pagination',compact('users'));
+// });
+
+// Route::get('/joke', [JokeController::class, 'getRandomJoke']);
+
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+Route::post('/gallery', [GalleryController::class, 'upload'])->name('gallery.post');
+
+
+Route::post('/galleryDownload', [GalleryController::class, 'download'])->name('gallery.download');
+Route::post('/galleryDelete', [GalleryController::class, 'delete'])->name('gallery.delete');

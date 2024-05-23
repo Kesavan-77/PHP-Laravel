@@ -44,17 +44,9 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
-
-        'sample' => [
-            \App\Http\Middleware\EnsureName::class,
-            \App\Http\Middleware\EnsureRole::class,
-            
-        ],
     ];
 
     protected $routeMiddleware = [
-        'nameAuth' => \App\Http\Middleware\EnsureName::class,
-        'roleAuth' => \App\Http\Middleware\EnsureRole::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
