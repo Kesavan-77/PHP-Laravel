@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\ValidationRequest;
 use App\Models\User;
 
@@ -13,17 +12,11 @@ class FormController extends Controller
     }
 
     public function store(ValidationRequest $request){
-        
-        $validated = $request->validated();
+        // Access validated data
+        dd($request->all());
 
-        $user = User::create([
-            'roll_no' => $validated['roll_no'],
-            'name' =>  $validated['name'],
-            'email' => $validated['email'],
-            'gender' => $validated['gender'],
-            'age' => $validated['age']
-        ]);
+        $validatedData = $request->validated();
 
-        return response()->json($user, 201);
+        return "hii";
     }
 }

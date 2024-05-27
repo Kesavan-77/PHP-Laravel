@@ -39,5 +39,11 @@ Route::get('/session',[SessionController::class,'index'])->name('session');
 Route::post('/session',[SessionController::class,'store'])->name('session.store');
 
 
-Route::get('/formSubmit',[FormController::class,'index'])->name('form');
-Route::post('/formSubmit',[FormController::class,'store'])->name('form.store');
+
+Route::get('/form', [FormController::class, 'index'])->name('form');
+Route::post('/formSubmit', [FormController::class, 'store'])->name('form.store');
+
+
+Route::get('/email',function(){
+    return view('email');
+});
