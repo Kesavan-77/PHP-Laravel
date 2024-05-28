@@ -13,5 +13,6 @@ class AuthorizationController extends Controller
 
         Gate::allows('isAdmin')? Response::allow(): abort(403);
         return "Welcome Admin";
+        
     }
 }

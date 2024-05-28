@@ -17,16 +17,18 @@
                         {{ __('You are logged in!') }}
 
                         @can('isAdmin')
-                            <h4>this is for admin</h4>
+                            <h4 class="text-center">this is for admin</h4>
                         @endcan
 
                         @can('isUser')
-                            <h4>this is for user</h4>
+                            <h4 class="text-center">this is for user</h4>
                         @endcan
 
                         @can('isEditor')
-                            <h4>this is for editor</h4>
+                            <h4 class="text-center">this is for editor</h4>
                         @endcan
+
+                        <button class="btn btn-primary"><a href="{{route('post.index')}}" class="nav-link">Show Post</a></button>
 
                     </div>
                 </div>
