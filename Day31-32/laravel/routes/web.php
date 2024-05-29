@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthorizationController;
+use App\Http\Controllers\BotController;
+use App\Http\Controllers\ExceptionController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,3 +33,9 @@ Route::get('/post',[PostController::class,'index'])->name('post.index');
 Route::get('/post/{post}',[PostController::class,'show'])->name('post.show');
 
 Route::get('/post/delete/{post}',[PostController::class,'destroy'])->name('post.destroy');
+
+Route::get('/exception',[ExceptionController::class,'index'])->name('exception');
+
+Route::get('/bot',[BotController::class,'index'])->name('bot.index');
+
+Route::post('/bot',[BotController::class,'status'])->name('bot.status');
