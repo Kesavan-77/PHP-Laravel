@@ -16,6 +16,21 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        $schedule
+        ->command('message:daily')
+        ->everyMinute()
+        ->appendOutputTo('scheduler.log')->thenPing('https://www.w3schools.com/php/');
+    }
+
+     /**
+     * Define the application's command schedule TimeZone.
+     *
+     * @return void
+     */
+    protected function scheduleTimeZone()
+    {
+        return 'America/Chicago';
     }
 
     /**

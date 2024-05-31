@@ -4,8 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthorizationController;
 use App\Http\Controllers\BotController;
 use App\Http\Controllers\ExceptionController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PostController;
+use App\Mail\notifyUser;
+use App\Http\Controllers\ComponentController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +43,9 @@ Route::get('/exception',[ExceptionController::class,'index'])->name('exception')
 Route::get('/bot',[BotController::class,'index'])->name('bot.index');
 
 Route::post('/bot',[BotController::class,'status'])->name('bot.status');
+
+Route::view('/mail','mails.user')->name('mail');
+
+Route::post('/sendMail',[MailController::class,'send'])->name('mail.send');
+
+Route::get('/components',[ComponentController::class,'index'])->name('component');
