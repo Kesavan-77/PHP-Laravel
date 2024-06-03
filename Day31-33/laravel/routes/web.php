@@ -8,8 +8,10 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\PostController;
 use App\Mail\notifyUser;
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,48 @@ use Illuminate\Support\Facades\Mail;
 */
 
 Route::get('/', function () {
+
+    // class Stadium{
+
+    // }
+    // class Basketball
+    // {
+    //     protected $stadium = null;
+    //     public function __construct(Stadium $stadium)
+    //     {
+    //         $this->stadium = $stadium;
+    //     }
+    // }
+    // class game{
+    //     protected $basketball = null;
+    //     public function __construct(Basketball $basketball )
+    //     {
+    //         $this->basketball = $basketball;
+    //     }
+    // }
+
+    // app()->bind('game',function(){
+    //     return new game(new Basketball(new Stadium));
+    // });
+
+    
+    // app()->make('game')
+
+    //  dd(resolve('game'));
+
+    // app()->singleton('rand',function(){
+    //     return Str::random(10);
+    // });
+
+    // dump(app()->make('rand'));
+    // dump(app()->make('rand'));
+    // return view('welcome');
+
+    // dd(app());
+
+    // dd(app()->make('test'));
+
+    // app()->make('test');
     return view('welcome');
 });
 
@@ -49,3 +93,5 @@ Route::view('/mail','mails.user')->name('mail');
 Route::post('/sendMail',[MailController::class,'send'])->name('mail.send');
 
 Route::get('/components',[ComponentController::class,'index'])->name('component');
+
+Route::get('/payment',[PaymentController::class],'charge');
