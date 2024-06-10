@@ -16,5 +16,12 @@ https://github.com/Kesavan-V-Sparkout/Internship_Tasks/commit/5d3b05c34a4619600b
 
 ### Day35
 
-
 https://github.com/Kesavan-V-Sparkout/Internship_Tasks/commit/5089e7e338b8335691a62d9f86071ae1f3838635
+
+### Day36
+
+https://github.com/Kesavan-V-Sparkout/Internship_Tasks/commit/56e1cf049dbe83c3c5b0c9d9ed02a78e411aa822
+
+### Day37
+
+https://github.com/Kesavan-V-Sparkout/Internship_Tasks/commit/ddde89fe351117809298e39b215070a28aa1cc15
