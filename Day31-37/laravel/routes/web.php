@@ -102,4 +102,3 @@ Route::post('/saveMail',[MailController::class,'save'])->name('mail.save');
 Route::get('/components',[ComponentController::class,'index'])->name('component');
 
 Route::get('/payment',[PaymentController::class,'charge']);
-
