@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\SendEmail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class MailController extends Controller
 {
