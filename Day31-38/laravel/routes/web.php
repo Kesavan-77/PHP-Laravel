@@ -12,6 +12,7 @@ use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,9 @@ use Illuminate\Support\Str;
 */
 
 Route::get('/', function () {
+
+    $arr = collect([20,30,40]);
+    dd($arr->toZero());
 
     // class Stadium{
 
