@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,3 +107,11 @@ Route::post('/saveMail',[MailController::class,'save'])->name('mail.save');
 Route::get('/components',[ComponentController::class,'index'])->name('component');
 
 Route::get('/payment',[PaymentController::class,'charge']);
+
+Route::get('/tree',function(){
+    $users = DB::select('SELECT distinct pname AS Parent,GROUP_CONCAT(name) AS Children
+    FROM sunflower
+    GROUP BY Parent;');
+    return view('tree')->with('users',$users);
+    
+});
