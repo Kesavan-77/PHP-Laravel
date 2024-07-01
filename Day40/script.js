@@ -69,36 +69,37 @@ const renderBinaryTree = (node) => {
     return html;
 };
 
-function getMaxDepth(node) {
-    if (node === null) return 0;
-    const leftDepth = getMaxDepth(node.left);
-    const rightDepth = getMaxDepth(node.right);
-    return Math.max(leftDepth, rightDepth) + 1;
-}
 
-function assignValuesByDepth(node, currentDepth, maxDepth, arr) {
-    if (node === null) return;
-    const value = arr[maxDepth - currentDepth];
-    const nodeElement = document.getElementById(`node_${node.data}`);
-    if (nodeElement) {
-        nodeElement.textContent += ` (${value})`;
-    }
-    assignValuesByDepth(node.left, currentDepth + 1, maxDepth, arr);
-    assignValuesByDepth(node.right, currentDepth + 1, maxDepth, arr);
+function assignValuesforTree(node) {
+    let calculatePoints = (node) => {
+        if (!node) {
+            return 0;
+        }
+
+        let leftPoints = calculatePoints(node.left);
+        let rightPoints = calculatePoints(node.right);
+
+        let maxPoints = Math.max(leftPoints,rightPoints);
+
+        let totalPoints = (maxPoints?maxPoints:1000) + 0.1 * maxPoints;
+
+        const nodeElement = document.getElementById(`node_${node.data}`);
+
+        if (nodeElement) {
+            if(totalPoints>=1210) nodeElement.textContent += ` (${totalPoints})*`;
+            else nodeElement.textContent += ` (${totalPoints})`;
+        }
+        return totalPoints;
+    };
+
+    calculatePoints(node);
 }
 
 const main = () => {
     const rootNode = getTreeData();
     const treeDOMElement = document.querySelector('.tree');
     treeDOMElement.innerHTML = renderBinaryTree(rootNode);
-    const maxDepth = getMaxDepth(rootNode);
-    let arr = [1000];
-    for (let i = 1; i <= maxDepth; i++) {
-        arr.push(arr[arr.length - 1] + (arr[arr.length - 1] / 100) * 10);
-    }
-    console.log('Max Depth:', maxDepth);
-    console.log('Array:', arr);
-    assignValuesByDepth(rootNode, 1, maxDepth, arr);
+    assignValuesforTree(rootNode);
 };
 
 main();

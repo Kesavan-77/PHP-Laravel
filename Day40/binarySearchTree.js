@@ -49,7 +49,6 @@ class BST {
         }
 
         const searchTree = (node) => {
-            console.log("Node",node);
             if (node === null) return false;
 
             if (node.data === parentNodeData) {
@@ -70,7 +69,6 @@ class BST {
                         return false;
                     }
                 } else {
-
                     console.log("Invalid side specified.");
                     return false;
                 }
@@ -84,33 +82,23 @@ class BST {
         }
     }
 
-    levelOrderTraversal() {
-        if (this.root === null) return;
 
-        let queue = [this.root];
-        while (queue.length > 0) {
-            let currentNode = queue.shift();
-            console.log(currentNode.data);
-
-            if (currentNode.left !== null) {
-                queue.push(currentNode.left);
+    postOrderTraversal(node=this.root) {
+        let calculatePoints = (node) => {
+            if (!node) {
+                return 0;
             }
-            if (currentNode.right !== null) {
-                queue.push(currentNode.right);
-            }
-        }
-    }
-
-    postOrderTraversal(node) {
-        if (node === null) return;
-
-        this.postOrderTraversal(node.right);
-        this.postOrderTraversal(node.left);
-        console.log(node.data);
-    }
-
-    traverseLeafToRoot() {
-        this.postOrderTraversal(this.root);
+    
+            let leftPoints = calculatePoints(node.left);
+            let rightPoints = calculatePoints(node.right);
+    
+            let totalPoints = 1000 + 0.1 * (leftPoints + rightPoints);
+    
+            console.log(`Node: ${node.data}, Points: ${totalPoints}`);
+            return totalPoints;
+        };
+    
+        calculatePoints(node);
     }
 }
 
@@ -122,6 +110,7 @@ bst.insertAt('B', 'D', 'left');
 bst.insertAt('B', 'E', 'right');
 bst.insertAt('C', 'F', 'left');
 bst.insertAt('C', 'G', 'right');
+bst.insertAt('G', 'I', 'right');
 
 console.log("Leaf to Root Traversal:");
-bst.traverseLeafToRoot();
+bst.postOrderTraversal();
